@@ -6,3 +6,7 @@
 .loader {
     display: block;
 }
+
+.is-hidden{
+    display: none;
+}
