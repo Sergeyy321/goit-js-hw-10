@@ -14,11 +14,13 @@ const { selector, divCatInfo, loader, error } = ref;
 loader.classList.replace('loader', 'is-hidden');
 error.classList.add('is-hidden');
 divCatInfo.classList.add('is-hidden');
-selector.classList.add('is-hidden');
+ref.selector.hidden = true
+
 
 let arrBreedsId = [];
 fetchBreeds()
-.then(data => {
+    .then(data => {
+     ref.selector.hidden = false
     data.forEach(element => {
         arrBreedsId.push({text: element.name, value: element.id});
     });
