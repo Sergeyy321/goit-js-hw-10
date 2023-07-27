@@ -10,19 +10,19 @@ const ref = {
     error: document.querySelector('.error'),
 };
 const { selector, divCatInfo, loader, error } = ref;
-
+selector.classList.add('is-hidden');
 loader.classList.replace('loader', 'is-hidden');
 error.classList.add('is-hidden');
 divCatInfo.classList.add('is-hidden');
-ref.selector.hidden = true
+
 
 
 let arrBreedsId = [];
 fetchBreeds()
     .then(data => {
-     ref.selector.hidden = false
     data.forEach(element => {
-        arrBreedsId.push({text: element.name, value: element.id});
+        arrBreedsId.push({ text: element.name, value: element.id });
+        
     });
     new SlimSelect({
         select: selector,
@@ -44,7 +44,6 @@ function onSelectBreed(event) {
         loader.classList.replace('loader', 'is-hidden');
         selector.classList.remove('is-hidden');
         const { url, breeds } = data[0];
-        
         divCatInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`
         divCatInfo.classList.remove('is-hidden');
     })
